@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, CardMedia } from "@mui/material";
+import { Box, Typography, CardMedia, SxProps } from "@mui/material";
 import { StaticImageData } from "next/image";
 
 type TextImageCardProps = {
@@ -31,16 +31,16 @@ const TextImageCard: React.FC<TextImageCardProps> = ({
         p: 2,
         border: "2px solid #665d5d",
         borderRadius: 2,
-        width: "400px",
-        height: "150px",
+        width: "600px",
+        height: "250px",
       }}
     >
-      <Box>
+      <Box sx={{ width: "40%", height: "200px" }}>
         <CardMedia
           component="img"
           image={image.src}
           alt={title}
-          sx={{ width: "150px", height: "120px" }}
+          sx={{ height: "100%", width: "100%", ml: 4, mt: 1 }}
         />
       </Box>
       <Box
@@ -49,10 +49,48 @@ const TextImageCard: React.FC<TextImageCardProps> = ({
           justifyContent: "center",
           flexDirection: "column",
           gap: 2,
+          width: "60%",
+          padding: 2,
+          overflow: "hidden",
+          maxWidth: "60%",
+          boxSizing: "border-box",
+          minHeight: 0,
+          flexShrink: 1,
         }}
       >
-        <Typography variant="h6">{title || ""}</Typography>
-        <Typography variant="body1">{description || ""}</Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            fontFamily: "serif",
+            fontSize: "1.0rem",
+            fontWeight: "bold",
+            wordWrap: "break-word",
+            overflowWrap: "break-word",
+            textOverflow: "ellipsis",
+            whiteSpace: "normal",
+            overflow: "hidden",
+          }}
+        >
+          {title || ""}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: "0.8rem",
+            fontFamily: "serif",
+            width: "100%",
+            maxWidth: "100%",
+            wordWrap: "break-word",
+            overflowWrap: "break-word",
+            textOverflow: "ellipsis",
+            whiteSpace: "normal",
+            lineHeight: 1.4,
+            overflow: "hidden",
+            display: "block",
+          }}
+        >
+          {description || ""}
+        </Typography>
       </Box>
     </Box>
   );
